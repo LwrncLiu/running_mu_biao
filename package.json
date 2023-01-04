@@ -1,0 +1,22 @@
+{
+  "name": "running_mu_biao",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LwrncLiu/running_mu_biao.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LwrncLiu/running_mu_biao/issues"
+  },
+  "homepage": "https://github.com/LwrncLiu/running_mu_biao#readme",
+  "dependencies": {
+    "three": "^0.148.0"
+  }
+}
