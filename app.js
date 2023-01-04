@@ -71,7 +71,7 @@ class World {
         // lights
         const topRightLight = new THREE.DirectionalLight(0xFFFFFF, 1.0)
         topRightLight.intensity = 1.5
-        topRightLight.position.set(20, 30, -25)
+        topRightLight.position.set(20, 45, -25)
         topRightLight.target.position.set(0, 0, 0)
         topRightLight.castShadow = true
         this.scene.add(topRightLight)
@@ -194,8 +194,8 @@ class World {
         const rb = new RigidBody()
         rb.createBox(this.default_mass, brick.position, brick.quaternion, new THREE.Vector3(brickDimension.width, brickDimension.height, brickDimension.depth))
         rb.setRestitution(0.125)
-        rb.setFriction(1)
-        rb.setRollingFriction(5)
+        rb.setFriction(3)
+        rb.setRollingFriction(10)
 
         this.physicsWorld.addRigidBody(rb.body)
 
