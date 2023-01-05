@@ -1,0 +1,18 @@
+body {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: 0;
+    overscroll-behavior: none;
+}
+
+.top-content {
+    position: absolute;
+    width: 100vw;
+}
+
+.bottom-content {
+    position: fixed;
+    bottom: 5vh;
+    margin-left: 2rem;
+}
