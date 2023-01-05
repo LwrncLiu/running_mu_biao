@@ -11,6 +11,10 @@ body {
     width: 100vw;
 }
 
+.text {
+    margin: 2rem;
+}
+
 .bottom-content {
     position: fixed;
     bottom: 5vh;
