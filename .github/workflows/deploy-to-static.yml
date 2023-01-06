@@ -32,8 +32,8 @@ jobs:
       - run: npm ci
       - run: npm run build
           env:
-          STRAVA_CLIENT_SECRET: ${{ github.STRAVA_CLIENT_SECRET }}
-          STRAVA_REFRESH_TOKEN: ${{ github.STRAVA_REFRESH_TOKEN }}
+            STRAVA_CLIENT_SECRET: ${{ github.STRAVA_CLIENT_SECRET }}
+            STRAVA_REFRESH_TOKEN: ${{ github.STRAVA_REFRESH_TOKEN }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
