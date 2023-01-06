@@ -1,0 +1,21 @@
+name: Miles Retrieval
+
+on:
+  workflow_dispatch:
+  schedule: 
+    - cron: '0 6 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Fetch data
+      uses: JamesIves/fetch-api-data-action@v2
+      with:
+        token-endpoint: https://www.strava.com/oauth/token
+        token-configuration: '{ "method":"POST", "headers": {"Accept": "application/json, text/plain, */*", "Content-Type": "application/json"}, "body": {"client_id": "99458", "client_secret": "${{ github.STRAVA_CLIENT_SECRET }}", "refresh_token": "${{ github.STRAVA_REFRESH_TOKEN }}", "grant_type": "refresh_token"} }'
+        endpoint: https://www.strava.com/api/v3/athletes/49030731/stats
+        configuration: '{ "method": "GET", "body": "{{{ data.access_token }}}" }'
