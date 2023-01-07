@@ -18,4 +18,4 @@ jobs:
         token-endpoint: https://www.strava.com/api/v3/oauth/token
         token-configuration: '{ "method":"POST", "headers": {"Accept": "application/json, text/plain, */*", "Content-Type": "application/json"}, "body": {"client_id": "99458", "client_secret": "${{ secrets.STRAVA_CLIENT_SECRET }}", "refresh_token": "${{ secrets.STRAVA_REFRESH_TOKEN }}", "grant_type": "refresh_token"} }'
         endpoint: https://www.strava.com/api/v3/athletes/49030731/stats
-        configuration: '{ "method": "GET", "headers": {"Authorization": "Bearer {{{ data.access_token }}}"} }'
+        configuration: '{ "method": "GET", "body": {"access_token": "{{{ data.access_token }}}"} }'
