@@ -25,7 +25,6 @@ jobs:
     - name: Fetch data
       uses: JamesIves/fetch-api-data-action@v2
       with:
-        debug: true
         token-endpoint: https://www.strava.com/api/v3/oauth/token
         token-configuration: '{ "method":"POST", "headers": {"Accept": "application/json, text/plain, */*", "Content-Type": "application/json"}, "body": {"client_id": "99458", "client_secret": "${{ secrets.STRAVA_CLIENT_SECRET }}", "refresh_token": "${{ secrets.STRAVA_REFRESH_TOKEN }}", "grant_type": "refresh_token", "redirect_uri": "http://localhost"} }'
         endpoint: https://www.strava.com/api/v3/athlete/activities/
