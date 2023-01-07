@@ -28,5 +28,5 @@ jobs:
         debug: true
         token-endpoint: https://www.strava.com/api/v3/oauth/token
         token-configuration: '{ "method":"POST", "headers": {"Accept": "application/json, text/plain, */*", "Content-Type": "application/json"}, "body": {"client_id": "99458", "client_secret": "${{ secrets.STRAVA_CLIENT_SECRET }}", "refresh_token": "${{ secrets.STRAVA_REFRESH_TOKEN }}", "grant_type": "refresh_token", "redirect_uri": "http://localhost"} }'
-        endpoint: https://www.strava.com/api/v3/athlete/activities
+        endpoint: https://www.strava.com/api/v3/athlete/activities/
         configuration: '{ "method": "GET", "headers": {"Authorization": "Bearer {{{ data.access_token }}}"} }'
