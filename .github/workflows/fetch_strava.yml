@@ -23,6 +23,9 @@ jobs:
 
     - name: get miles
       run: npm run update-ytd-distance
+      env:
+        STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+        STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
     # - name: Fetch data
     #   uses: JamesIves/fetch-api-data-action@v2
     #   with: 
