@@ -1,4 +1,5 @@
 require('dotenv').config()
+const core = require('@actions/core')
 
 async function getDistance(res){
     const stats_link = `https://www.strava.com/api/v3/athletes/49030731/stats?access_token=${res.access_token}`
@@ -18,7 +19,7 @@ async function reAuthorize(){
     const response = await fetch(auth_link,{
         method: 'post',
         headers: {
-            'Accept': 'application/json, text/plain, */*',
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         
@@ -30,14 +31,15 @@ async function reAuthorize(){
         })
     })
     const auth = await response.json()
-    console.log(auth)
     return auth
 }
 
 async function logDistance() {
     const auth = await reAuthorize()
-    console.log(auth)
     const distance = await getDistance(auth)
+    
+    // 
+    core.setOutput('TOTAL_MILES', `{"total_miles": ${distance}}`)
 }
 
 logDistance()
