@@ -13,24 +13,24 @@ jobs:
     - name: check out repo
       uses: actions/checkout@v2
 
-    - name: use node
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18.x'
+    # - name: use node
+    #   uses: actions/setup-node@v2
+    #   with:
+    #     node-version: '18.x'
 
-    - name: install node dependencies
-      run: npm ci
+    # - name: install node dependencies
+    #   run: npm ci
 
-    - name: get miles
-      run: npm run update-ytd-distance
-      env:
-        STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
-        STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
-    # - name: Fetch data
-    #   uses: JamesIves/fetch-api-data-action@v2
-    #   with: 
-    #     debug: true
-    #     token-endpoint: https://www.strava.com/api/v3/oauth/token
-    #     token-configuration: '{ "method":"POST", "headers": {"Accept": "application/json, text/plain, */*", "Content-Type": "application/json"}, "body": {"client_id": "99458", "client_secret": "${{ secrets.STRAVA_CLIENT_SECRET }}", "refresh_token": "${{ secrets.STRAVA_REFRESH_TOKEN }}", "grant_type": "refresh_token"} }'
-    #     endpoint: https://www.strava.com/api/v3/athletes/49030731/stats
-    #     configuration: '{ "method": "GET", "headers": {"Authorization": "Bearer {{{ data.access_token }}}"} }'
+    # - name: get miles
+    #   run: npm run update-ytd-distance
+    #   env:
+    #     STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+    #     STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+    - name: Fetch data
+      uses: JamesIves/fetch-api-data-action@v2
+      with: 
+        debug: true
+        token-endpoint: https://www.strava.com/api/v3/oauth/token
+        token-configuration: '{ "method":"POST", "headers": {"Accept": "application/json", "Content-Type": "application/json"}, "body": {"client_id": "99458", "client_secret": "${{ secrets.STRAVA_CLIENT_SECRET }}", "refresh_token": "${{ secrets.STRAVA_REFRESH_TOKEN }}", "grant_type": "refresh_token"} }'
+        endpoint: https://www.strava.com/api/v3/athletes/49030731/stats
+        configuration: '{ "method": "GET", "headers": {"Authorization": "Bearer {{{ data.access_token }}}"} }'
