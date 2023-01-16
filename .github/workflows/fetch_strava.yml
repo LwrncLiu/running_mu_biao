@@ -29,14 +29,14 @@ jobs:
         STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
 
     - name: update file
-      run: echo "$TOTAL_MILES" > ./public/data.json
+      run: echo "$TOTAL_MILES" > ./docs/data.json
       env: 
         TOTAL_MILES: ${{ steps.miles.outputs.TOTAL_MILES }}
 
     - name: commit changed file
       uses: EndBug/add-and-commit@v7
       with:
-        add: './public/data.json'
+        add: './docs/data.json'
         message: 'Update total miles in data.json file'
 
     # - name: Fetch data
