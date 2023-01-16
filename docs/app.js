@@ -43,9 +43,9 @@ class RigidBody {
 }
 
 class World {
-    constructor(num_bricks) {
+    constructor(numBricks) {
         this.default_mass = 10
-        this.num_bricks = num_bricks
+        this.numBricks = numBricks
     }
 
     initialize() {
@@ -153,7 +153,7 @@ class World {
     step(timeElapsed) {
         const timeElapsedSeconds = timeElapsed * 0.001
         this.countdown -= timeElapsedSeconds
-        if (this.countdown < 0 && this.count < this.num_bricks) {
+        if (this.countdown < 0 && this.count < this.numBricks) {
             this.countdown = 0.25
             this.count += 1
             this.spawn()
@@ -195,7 +195,7 @@ class World {
         rb.createBox(this.default_mass, brick.position, brick.quaternion, new THREE.Vector3(brickDimension.width, brickDimension.height, brickDimension.depth))
         rb.setRestitution(0.125)
         rb.setFriction(3)
-        rb.setRollingFriction(10)
+        rb.setRollingFriction(5)
 
         this.physicsWorld.addRigidBody(rb.body)
 
@@ -206,12 +206,24 @@ class World {
 }
 
 
+async function getMiles() {
+    const response = await fetch('data.json')
+    const data = await response.json()
+    return data['total_miles']
+}
+
+function setMiles(distance) {
+    document.querySelector('#total-miles').textContent = 'Miles Ran: ' + distance
+}
+
 let APP = null 
 
 window.addEventListener('DOMContentLoaded', async() => {
+    const distance = await getMiles()
+    setMiles(distance)
     Ammo().then((lib) => {
         Ammo = lib
-        APP = new World(15)
+        APP = new World(distance)
         APP.initialize()
     })
 })
