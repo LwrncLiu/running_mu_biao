@@ -33,6 +33,12 @@ jobs:
       env: 
         TOTAL_MILES: ${{ steps.miles.outputs.TOTAL_MILES }}
 
+    - name: commit changed file
+      run: EndBug/add-and-commit@v7
+      with:
+        add: './public/data.json'
+        message: 'Update total miles in data.json file'
+
     # - name: Fetch data
     #   uses: JamesIves/fetch-api-data-action@v2
     #   with: 
