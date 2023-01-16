@@ -29,9 +29,10 @@ jobs:
         STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
 
     - name: update file
-      run: echo "$TOTAL_MILES"
+      run: echo "$TOTAL_MILES" > ./public/data.json
       env: 
         TOTAL_MILES: ${{ steps.miles.outputs.TOTAL_MILES }}
+
     # - name: Fetch data
     #   uses: JamesIves/fetch-api-data-action@v2
     #   with: 
